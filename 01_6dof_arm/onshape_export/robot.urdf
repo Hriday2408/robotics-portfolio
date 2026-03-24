@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<!-- Generated using onshape-to-robot -->
+<!-- Onshape document_id: a878df516f3822672e940658 / workspace_id: 6a5fc0af63b06b3d84cdbb9a -->
+<robot name="arm_6dof">
+  <!-- Link base_link -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0 0 0.02" rpy="0 0 0"/>
+      <mass value="0.330496"/>
+      <inertia ixx="0.000250626" ixy="0" ixz="0" iyy="0.000250626" iyz="0" izz="0.000413119"/>
+    </inertial>
+    <!-- Part base_link -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/assets/base_link.stl"/>
+      </geometry>
+      <material name="base_link_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/assets/base_link.stl"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

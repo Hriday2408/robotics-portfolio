@@ -1,0 +1,21 @@
+{
+    "documentId": "a878df516f3822672e940658",
+    "workspaceId": "6a5fc0af63b06b3d84cdbb9a",
+    "assemblyName": "Assembly 1",
+
+    "outputFormat": "urdf",
+    "packageName": "arm_description",
+
+    "robotName": "arm_6dof",
+
+    "dynamics": true,
+    "jointLimits": true,
+
+    "whitelist": null,
+
+    "noDynamics": false,
+
+    "simplifyMeshes": false,
+
+    "ignore": []
+}

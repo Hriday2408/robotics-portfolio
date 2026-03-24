@@ -16,5 +16,4 @@ __pycache__/
 Thumbs.db
 
 # Large mesh files (track separately if needed)
-*.stl
 *.dae

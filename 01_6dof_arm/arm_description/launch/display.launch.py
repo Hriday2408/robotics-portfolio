@@ -40,7 +40,7 @@ def generate_launch_description():
             package='rviz2',
             executable='rviz2',
             name='rviz2',
-            output='screen'
+            output='screen',
             arguments=['-d', os.path.join(pkg_share, 'rviz', 'arm_display.rviz')]            
         ),
 
