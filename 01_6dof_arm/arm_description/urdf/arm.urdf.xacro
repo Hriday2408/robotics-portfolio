@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="arm_6dof">
+
+  <!-- ============================================================
+       arm.urdf.xacro
+       6DOF robotic arm - base link only (Phase 1 stub)
+       We will add joints and links one by one in Phase 2
+       ============================================================ -->
+
+  <!-- PROPERTY: change dimensions in one place, reflects everywhere -->
+  <xacro:property name="base_radius" value="0.05"/>
+  <xacro:property name="base_height" value="0.04"/>
+  <xacro:property name="base_mass"   value="1.0"/>
+
+  <!-- BASE LINK: fixed mounting point of the arm -->
+  <link name="base_link">
+
+    <!-- Visual: what you see in RViz and Gazebo -->
+    <visual>
+      <geometry>
+        <cylinder radius="${base_radius}" length="${base_height}"/>
+      </geometry>
+      <material name="dark_grey">
+        <color rgba="0.2 0.2 0.2 1.0"/>
+      </material>
+    </visual>
+
+    <!-- Collision: simplified shape used by physics engine -->
+    <collision>
+      <geometry>
+        <cylinder radius="${base_radius}" length="${base_height}"/>
+      </geometry>
+    </collision>
+
+    <!-- Inertial: required for Gazebo to simulate physics -->
+    <!-- Inertia tensor for solid cylinder:
+         Ixx = Iyy = m(3r^2 + h^2)/12
+         Izz = mr^2/2 -->
+    <inertial>
+      <mass value="${base_mass}"/>
+      <inertia
+        ixx="${base_mass * (3*base_radius*base_radius + base_height*base_height) / 12}"
+        iyy="${base_mass * (3*base_radius*base_radius + base_height*base_height) / 12}"
+        izz="${base_mass * base_radius*base_radius / 2}"
+        ixy="0.0" ixz="0.0" iyz="0.0"/>
+    </inertial>
+
+  </link>
+
+</robot>

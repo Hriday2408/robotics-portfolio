@@ -1,0 +1,20 @@
+# ROS2 build artifacts
+build/
+install/
+log/
+*.pyc
+__pycache__/
+
+# Colcon
+.colcon/
+
+# Gazebo
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large mesh files (track separately if needed)
+*.stl
+*.dae
