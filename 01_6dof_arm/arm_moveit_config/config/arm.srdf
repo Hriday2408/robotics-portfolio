@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<robot name="arm_6dof">
+
+  <!-- PLANNING GROUP: arm
+       All 6 revolute joints. This is what MoveIt2 plans for.
+       The chain goes from base_link to tool_link. -->
+  <group name="arm">
+    <chain base_link="world" tip_link="tool_link"/>
+  </group>
+
+  <!-- DEFAULT STATES: named joint configurations
+       "home" = arm fully upright (all zeros)
+       "ready" = slight bend at shoulder and elbow -->
+  <group_state name="home" group="arm">
+    <joint name="joint_1" value="0"/>
+    <joint name="joint_2" value="0"/>
+    <joint name="joint_3" value="0"/>
+    <joint name="joint_4" value="0"/>
+    <joint name="joint_5" value="0"/>
+    <joint name="joint_6" value="0"/>
+  </group_state>
+
+  <group_state name="ready" group="arm">
+    <joint name="joint_1" value="0"/>
+    <joint name="joint_2" value="-0.785"/>
+    <joint name="joint_3" value="0.785"/>
+    <joint name="joint_4" value="0"/>
+    <joint name="joint_5" value="0.785"/>
+    <joint name="joint_6" value="0"/>
+  </group_state>
+
+  <!-- END EFFECTOR -->
+  <end_effector name="tool" parent_link="tool_link" group="arm"/>
+
+  <!-- ALLOWED COLLISION MATRIX (ACM)
+       Adjacent links are always in contact at joints — we must
+       explicitly allow these collisions or the planner will think
+       the arm is always in collision with itself. -->
+  <disable_collisions link1="base_link" link2="link_1" reason="Adjacent"/>
+  <disable_collisions link1="link_1"    link2="link_2" reason="Adjacent"/>
+  <disable_collisions link1="link_2"    link2="link_3" reason="Adjacent"/>
+  <disable_collisions link1="link_3"    link2="link_4" reason="Adjacent"/>
+  <disable_collisions link1="link_4"    link2="link_5" reason="Adjacent"/>
+  <disable_collisions link1="link_5"    link2="link_6" reason="Adjacent"/>
+  <disable_collisions link1="link_6"    link2="tool_link" reason="Adjacent"/>
+
+  <!-- Non-adjacent links that can never reach each other geometrically -->
+  <disable_collisions link1="base_link" link2="link_2" reason="Never"/>
+  <disable_collisions link1="base_link" link2="link_3" reason="Never"/>
+  <disable_collisions link1="link_1"    link2="link_3" reason="Never"/>
+  <disable_collisions link1="link_1"    link2="link_4" reason="Never"/>
+  <disable_collisions link1="world" link2="base_link" reason="Adjacent"/>
+
+</robot>
